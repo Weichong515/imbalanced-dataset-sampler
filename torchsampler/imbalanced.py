@@ -47,8 +47,9 @@ class ImbalancedDatasetSampler(torch.utils.data.sampler.Sampler):
             return dataset.train_labels[idx].item()
         elif isinstance(dataset, torchvision.datasets.ImageFolder):
             return dataset.imgs[idx][1]
+        #modified for non-image dataset
         elif isinstance(dataset, torch.utils.data.Subset):
-            return dataset.dataset.imgs[idx][1]
+            return dataset.dataset.tensors[2][idx]
         else:
             raise NotImplementedError
                 
