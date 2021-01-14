@@ -49,7 +49,7 @@ class ImbalancedDatasetSampler(torch.utils.data.sampler.Sampler):
             return dataset.imgs[idx][1]
         #modified for non-image dataset
         elif isinstance(dataset, torch.utils.data.Subset):
-            return dataset.dataset.tensors[2][idx]
+            return int(dataset.dataset.tensors[2][idx])
         else:
             raise NotImplementedError
                 
